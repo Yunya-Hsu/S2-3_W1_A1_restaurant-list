@@ -1,5 +1,7 @@
-# S2-3_W1_A1 My Restaurant List
-// 截圖
+# My Restaurant List
+![Home Page](https://github.com/Yunya-Hsu/S2-3_W1_A1_restaurant-list/blob/main/public/img/homePage.png)
+---
+![Restaurant Page](https://github.com/Yunya-Hsu/S2-3_W1_A1_restaurant-list/blob/main/public/img/restaurantPage.png)
 
 
 
