@@ -7,7 +7,7 @@
 
 ## Features
 - User is able to review all restaurants.
-- User can do search by entering keyword into search bar; restaurants will be shown if their "name" includes keyword.
+- User can do search by entering keyword into search bar; restaurants will be shown if their "name" or "description" includes keyword.
 - By clicking restaurant, user will enter the dedicated page and be able to check restaurants' details including address/ phone/ description.
 
 
