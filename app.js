@@ -4,8 +4,7 @@ const exphbs = require('express-handlebars')
 const mongoose = require('mongoose')
 const app = express()
 const port = 3000
-
-const restaurants = require('./restaurant.json').results //FIXME:
+const Restaurant = require('./models/restaurant.js')
 
 
 // 使用express-handlebars 為樣版引擎
