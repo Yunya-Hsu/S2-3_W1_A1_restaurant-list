@@ -39,7 +39,6 @@ app.get('/', (req, res) => {
     .catch(error => console.error(error))
 })
 
-
 app.get('/restaurants/:id', (req, res) => {
   const id = req.params.id
   Restaurant.findById(id)
@@ -48,6 +47,32 @@ app.get('/restaurants/:id', (req, res) => {
     .catch(error => console.error(error))
 })
 
+app.get('/restaurants/:id/edit', (req, res) => {
+  const id = req.params.id
+  Restaurant.findById(id)
+    .lean()
+    .then(restaurant => res.render('edit', { restaurant }))
+    .catch(error => console.error(error))
+})
+
+app.post('/restaurants/:id/edit', (req, res) => {
+  const id = req.params.id
+  const result = req.body   // 一個object
+  Restaurant.findById(id)
+    .then(restaurant => {
+      restaurant.category = result.category
+      restaurant.location = result.location
+      restaurant.phone = result.phone
+      restaurant.description = result.description
+      return restaurant.save()
+    })
+    .then(() => res.redirect(`/restaurants/${id}`))
+    .catch(error => console.error(error))
+})
+
+
+
+//FIXME: use mongoDB data to do search
 app.get('/search', (req, res) => {
   const keyword = req.query.keyword
   const adjustedKeyword = keyword.trim().toLowerCase()
