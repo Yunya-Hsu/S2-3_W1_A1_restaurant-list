@@ -33,13 +33,19 @@ db.once('open', () => {
 
 // 設定路由
 app.get('/', (req, res) => {
-  res.render('index', { restaurants: restaurants})
+  Restaurant.find()
+    .lean()
+    .then(restaurants => res.render('index', { restaurants }))
+    .catch(error => console.error(error))
 })
+
 
 app.get('/restaurants/:id', (req, res) => {
   const id = req.params.id
-  const theRestaurant = restaurants.filter(item => item.id === Number(id))
-  res.render('show', {restaurants: theRestaurant[0]})
+  Restaurant.findById(id)
+    .lean()
+    .then(restaurant => res.render('show', { restaurant }))
+    .catch(error => console.error(error))
 })
 
 app.get('/search', (req, res) => {
