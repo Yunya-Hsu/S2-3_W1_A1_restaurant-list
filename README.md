@@ -52,10 +52,10 @@ control + c
 
 
 # My Restaurant List
-![Home Page]()
+![Home Page](https://github.com/Yunya-Hsu/S2-3_W1_A1_restaurant-list/blob/main/public/img/homePage.png)
 ---
-![Review Page]()
+![Review Page](https://github.com/Yunya-Hsu/S2-3_W1_A1_restaurant-list/blob/main/public/img/reviewPage.png)
 ---
-![Edit Page]()
+![Edit Page](https://github.com/Yunya-Hsu/S2-3_W1_A1_restaurant-list/blob/main/public/img/editPage.png)
 ---
-![Create Page]()
+![Create Page](https://github.com/Yunya-Hsu/S2-3_W1_A1_restaurant-list/blob/main/public/img/createPage.png)
