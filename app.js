@@ -43,6 +43,13 @@ app.get('/restaurants/new', (req, res) => {
   res.render('new')
 })
 
+app.post('/restaurants', (req, res) => {
+  const newRestaurant = req.body // 一個object
+  Restaurant.create( newRestaurant )
+    .then(() => res.redirect('/'))
+    .catch(error => console.error(error))
+})
+
 app.get('/restaurants/:id', (req, res) => {
   const id = req.params.id
   Restaurant.findById(id)
@@ -61,13 +68,12 @@ app.get('/restaurants/:id/edit', (req, res) => {
 
 app.post('/restaurants/:id/edit', (req, res) => {
   const id = req.params.id
-  const result = req.body   // 一個object
+  const result = req.body
   Restaurant.findById(id)
     .then(restaurant => {
-      restaurant.category = result.category
-      restaurant.location = result.location
-      restaurant.phone = result.phone
-      restaurant.description = result.description
+      for (let key of Object.keys(result)) {
+        restaurant[key] = result[key]
+      }
       return restaurant.save()
     })
     .then(() => res.redirect(`/restaurants/${id}`))

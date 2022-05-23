@@ -11,7 +11,7 @@
             <i class="fas fa-concierge-bell pr-2"></i>
             店名：
           </label>
-          <input type="text" placeholder="麥當勞" name="name" id="name">
+          <input type="text" placeholder="麥當勞" name="name" id="name" required>
         </p>
 
         <p class="mb-1">
@@ -19,7 +19,7 @@
             <i class="fas fa-concierge-bell pr-2"></i>
             店名(英)：
           </label>
-          <input type="text" placeholder="McDonald's" name="name_en" id="name_en">
+          <input type="text" placeholder="McDonald's" name="name_en" id="name_en" required>
         </p>
 
         <p class="mb-1">
@@ -27,7 +27,7 @@
             <i class="fas fa-utensils pr-2"></i>
             類別：
           </label>
-          <input type="text" placeholder="美式速食" name="category" id="category">
+          <input type="text" placeholder="美式速食" name="category" id="category" required>
         </p>
 
         <p class="mb-1">
@@ -35,7 +35,7 @@
             <i class="fas fa-map-marker-alt pr-2"></i>
             地址：
           </label>
-          <input type="text" placeholder="台北市中山區北安路626號1樓" name="location" id="location" style="width: 350px">
+          <input type="text" placeholder="台北市中山區北安路626號1樓" name="location" id="location" style="width: 350px" required>
         </p>
 
         <p class="mb-1">
@@ -43,7 +43,7 @@
             <i class="fas fa-location-arrow pr-2"></i>
             Google Map：
           </label>
-          <input type="text" placeholder="https://goo.gl/maps/S6WJJgjqW9sghLm39" name="google_map" id="google_map" style="width: 350px">
+          <input type="text" placeholder="https://goo.gl/maps/S6WJJgjqW9sghLm39" name="google_map" id="google_map" style="width: 350px" required>
         </p>
 
         <p class="mb-1">
@@ -51,7 +51,7 @@
             <i class="fas fa-mobile-alt pr-2"></i>
             電話：
           </label>
-          <input type="text" placeholder="02 2533 6263" name="phone" id="phone">
+          <input type="text" placeholder="02 2533 6263" name="phone" id="phone required>
         </p>
 
         <p class="mb-1">
@@ -59,7 +59,7 @@
             <i class="fas fa-star pr-1"></i>
             評分：
           </label>
-          <input type="text" placeholder="3.8" name="rating" id="rating">
+          <input type="text" placeholder="3.8" name="rating" id="rating" required>
         </p>
 
         <p class="mb-1">
@@ -68,19 +68,19 @@
             描述：
           </label>
         </p>
-        <textarea placeholder="描述" name="description" id="description" rows="3" cols="75"></textarea>
+        <textarea placeholder="描述" name="description" id="description" rows="3" cols="75" required></textarea>
 
         <p class="mb-1">
           <label for="image" class="text-secondary">
             <i class="far fa-image pr-2"></i>
             圖片：
           </label>
-          <input type="text" placeholder="https://assets-lighthouse.s3.amazonaws.com/uploads/image/file/5628/02.jpg" name="image" id="image" style="width: 350px">
+          <input type="text" placeholder="https://assets-lighthouse.s3.amazonaws.com/uploads/image/file/5628/02.jpg" name="image" id="image" style="width: 350px" required>
         </p>
 
         <div class="mb-5 mt-5 d-flex justify-content-between">
           <a href="/" class="btn btn-primary btn-sm">首頁</a>
-          <button type="submit" class="btn btn-primary btn-sm btn-sm mr-2">儲存</button>
+          <button type="submit" class="btn btn-warning btn-sm mr-2">新增餐廳</button>
         </div>
 
       </form>
