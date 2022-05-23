@@ -39,6 +39,10 @@ app.get('/', (req, res) => {
     .catch(error => console.error(error))
 })
 
+app.get('/restaurants/new', (req, res) => {
+  res.render('new')
+})
+
 app.get('/restaurants/:id', (req, res) => {
   const id = req.params.id
   Restaurant.findById(id)

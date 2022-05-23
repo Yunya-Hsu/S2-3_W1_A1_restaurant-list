@@ -4,6 +4,22 @@
     <div class="col-12 col-md-10 mx-auto">
 
       <p class="mb-1">
+          <span class="text-secondary">
+            <i class="fas fa-concierge-bell pr-2"></i>
+            店名：
+          </span>
+          {{ restaurant.name }}
+      </p>
+
+      <p class="mb-1">
+          <span class="text-secondary">
+            <i class="fas fa-concierge-bell pr-2"></i>
+            店名(英)：
+          </span>
+          {{ restaurant.name_en }}
+      </p>
+      
+      <p class="mb-1">
         <span class="text-secondary">
           <i class="fas fa-utensils pr-2"></i>
           類別：
@@ -28,6 +44,14 @@
           電話：
         </span>
         {{ restaurant.phone }}
+      </p>
+
+      <p class="mb-1">
+        <span class="text-secondary">
+          <i class="fas fa-star pr-1"></i>
+          評分：
+        </span>
+        {{ restaurant.rating }}
       </p>
 
       <p class="mb-5">

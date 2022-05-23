@@ -1,17 +1,17 @@
-<h1 class="mb-1 restaurant-show-title">{{restaurant.name}}</h1>
+<h1 class="mb-1 restaurant-show-title">新增餐廳</h1>
 
 <div class="container">
   <div class="row">
     <div class="col-12 col-md-10 mx-auto">
 
-      <form action="/restaurants/{{ restaurant._id }}/edit" method="post">
+      <form action="/restaurants" method="post">
         
         <p class="mb-1">
           <label for="name" class="text-secondary">
             <i class="fas fa-concierge-bell pr-2"></i>
             店名：
           </label>
-          <input type="text" placeholder="麥當勞" value="{{ restaurant.name }}" name="name" id="name">
+          <input type="text" placeholder="麥當勞" name="name" id="name">
         </p>
 
         <p class="mb-1">
@@ -19,7 +19,7 @@
             <i class="fas fa-concierge-bell pr-2"></i>
             店名(英)：
           </label>
-          <input type="text" placeholder="McDonald's" value="{{ restaurant.name_en }}" name="name_en" id="name_en">
+          <input type="text" placeholder="McDonald's" name="name_en" id="name_en">
         </p>
 
         <p class="mb-1">
@@ -27,7 +27,7 @@
             <i class="fas fa-utensils pr-2"></i>
             類別：
           </label>
-          <input type="text" placeholder="類別" value="{{ restaurant.category }}" name="category" id="category">
+          <input type="text" placeholder="美式速食" name="category" id="category">
         </p>
 
         <p class="mb-1">
@@ -35,7 +35,7 @@
             <i class="fas fa-map-marker-alt pr-2"></i>
             地址：
           </label>
-          <input type="text" placeholder="地址" value="{{ restaurant.location }}" name="location" id="location" style="width: 350px">
+          <input type="text" placeholder="台北市中山區北安路626號1樓" name="location" id="location" style="width: 350px">
         </p>
 
         <p class="mb-1">
@@ -43,7 +43,7 @@
             <i class="fas fa-location-arrow pr-2"></i>
             Google Map：
           </label>
-          <input type="text" placeholder="https://goo.gl/maps/S6WJJgjqW9sghLm39" value="{{ restaurant.google_map }}" name="google_map" id="google_map" style="width: 350px">
+          <input type="text" placeholder="https://goo.gl/maps/S6WJJgjqW9sghLm39" name="google_map" id="google_map" style="width: 350px">
         </p>
 
         <p class="mb-1">
@@ -51,7 +51,7 @@
             <i class="fas fa-mobile-alt pr-2"></i>
             電話：
           </label>
-          <input type="text" placeholder="電話" value="{{ restaurant.phone }}" name="phone" id="phone">
+          <input type="text" placeholder="02 2533 6263" name="phone" id="phone">
         </p>
 
         <p class="mb-1">
@@ -59,7 +59,7 @@
             <i class="fas fa-star pr-1"></i>
             評分：
           </label>
-          <input type="text" placeholder="3.8" value="{{ restaurant.rating }}" name="rating" id="rating">
+          <input type="text" placeholder="3.8" name="rating" id="rating">
         </p>
 
         <p class="mb-1">
@@ -68,17 +68,15 @@
             描述：
           </label>
         </p>
-        <textarea placeholder="描述" name="description" id="description" rows="3" cols="75">{{ restaurant.description }}</textarea>
-
+        <textarea placeholder="描述" name="description" id="description" rows="3" cols="75"></textarea>
 
         <p class="mb-1">
           <label for="image" class="text-secondary">
             <i class="far fa-image pr-2"></i>
             圖片：
           </label>
-          <input type="text" placeholder="https://assets-lighthouse.s3.amazonaws.com/uploads/image/file/5628/02.jpg" value="{{ restaurant.image }}" name="image" id="image" style="width: 500px">
+          <input type="text" placeholder="https://assets-lighthouse.s3.amazonaws.com/uploads/image/file/5628/02.jpg" name="image" id="image" style="width: 350px">
         </p>
-        <img class="rounded mx-auto d-block mb-4 w-100" src="{{restaurant.image}}" alt="{{ restaurant.name }}" style="max-width: 600px;">
 
         <div class="mb-5 mt-5 d-flex justify-content-between">
           <a href="/" class="btn btn-primary btn-sm">首頁</a>
