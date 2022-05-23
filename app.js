@@ -89,13 +89,19 @@ app.post('/restaurants/:id/edit', (req, res) => {
 })
 
 
-
-//FIXME: use mongoDB data to do search
 app.get('/search', (req, res) => {
   const keyword = req.query.keyword
   const adjustedKeyword = keyword.trim().toLowerCase()
-  const searchResult = restaurants.filter(item => item.name.toLowerCase().includes(adjustedKeyword) || item.description.toLowerCase().includes(adjustedKeyword))
-  res.render('index', { restaurants: searchResult, keyword})
+  Restaurant.find()
+    .lean()
+    .then(restaurants => {
+      searchResult = restaurants.filter(item => 
+        item.name.toLowerCase().includes(adjustedKeyword) || 
+        item.description.toLowerCase().includes(adjustedKeyword))
+      console.log('searchResult: ', searchResult);
+      res.render('index', { restaurants: searchResult, keyword })
+    })
+    .catch(error => console.error(error))
 })
 
 
