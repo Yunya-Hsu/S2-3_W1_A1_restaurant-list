@@ -9,7 +9,7 @@ router.get('/', (req, res) => {
   Restaurant.find()
     .lean()
     .then(restaurants => {
-      searchResult = restaurants.filter(item =>
+      const searchResult = restaurants.filter(item =>
         item.name.toLowerCase().includes(adjustedKeyword) ||
         item.description.toLowerCase().includes(adjustedKeyword))
       res.render('index', { restaurants: searchResult, keyword })
