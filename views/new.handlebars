@@ -41,9 +41,9 @@
         <p class="mb-1">
           <label for="google_map" class="text-secondary">
             <i class="fas fa-location-arrow pr-2"></i>
-            Google Map：
+            Google Map連結：
           </label>
-          <input type="text" placeholder="https://goo.gl/maps/S6WJJgjqW9sghLm39" name="google_map" id="google_map" style="width: 350px" required>
+          <input type="url" placeholder="https://goo.gl/maps/S6WJJgjqW9sghLm39" name="google_map" id="google_map" style="width: 350px" required>
         </p>
 
         <p class="mb-1">
@@ -51,7 +51,7 @@
             <i class="fas fa-mobile-alt pr-2"></i>
             電話：
           </label>
-          <input type="text" placeholder="02 2533 6263" name="phone" id="phone" required>
+          <input type="tel" placeholder="02 2533 6263" name="phone" id="phone" required>
         </p>
 
         <p class="mb-1">
@@ -59,7 +59,7 @@
             <i class="fas fa-star pr-1"></i>
             評分：
           </label>
-          <input type="text" placeholder="3.8" name="rating" id="rating" required>
+          <input type="number" placeholder="3.8" name="rating" id="rating" min="0" max="5" step="0.1" required>
         </p>
 
         <p class="mb-1">
@@ -73,9 +73,9 @@
         <p class="mb-1">
           <label for="image" class="text-secondary">
             <i class="far fa-image pr-2"></i>
-            圖片：
+            圖片連結：
           </label>
-          <input type="text" placeholder="https://assets-lighthouse.s3.amazonaws.com/uploads/image/file/5628/02.jpg" name="image" id="image" style="width: 350px" required>
+          <input type="url" placeholder="https://assets-lighthouse.s3.amazonaws.com/uploads/image/file/5628/02.jpg" name="image" id="image" style="width: 350px" required>
         </p>
 
         <div class="mb-5 mt-5 d-flex justify-content-between">
