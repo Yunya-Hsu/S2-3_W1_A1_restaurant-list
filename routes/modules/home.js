@@ -4,7 +4,7 @@ const router = express.Router()
 
 const Restaurant = require('../../models/restaurant')
 
-const sortDetail = [
+const sortWay = [
   { _id: 'asc' },
   { name: 'asc' },
   { name: 'desc' },
@@ -27,7 +27,7 @@ router.get('/', (req, res) => {
   const sortType = sortName[selectedSort]
   Restaurant.find()
     .lean()
-    .sort(sortDetail[selectedSort])
+    .sort(sortWay[selectedSort])
     .then(restaurants => {
       res.render('index', { restaurants, sortType })
     })

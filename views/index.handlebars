@@ -30,11 +30,19 @@
             排序：{{ sortType }}
           </button>
           <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+            {{#if keyword}}
+            <li><a class="dropdown-item" href="?keyword={{ keyword }}&OM=1">餐廳名稱：A → Z</a></li>
+            <li><a class="dropdown-item" href="?keyword={{ keyword }}&OM=2">餐廳名稱：Z → A</a></li>
+            <li><a class="dropdown-item" href="?keyword={{ keyword }}&OM=3">評分：高 → 低</a></li>
+            <li><a class="dropdown-item" href="?keyword={{ keyword }}&OM=4">類別</a></li>
+            <li><a class="dropdown-item" href="?keyword={{ keyword }}&OM=5">地區</a></li>
+            {{else}}
             <li><a class="dropdown-item" href="?OM=1">餐廳名稱：A → Z</a></li>
             <li><a class="dropdown-item" href="?OM=2">餐廳名稱：Z → A</a></li>
             <li><a class="dropdown-item" href="?OM=3">評分：高 → 低</a></li>
             <li><a class="dropdown-item" href="?OM=4">類別</a></li>
             <li><a class="dropdown-item" href="?OM=5">地區</a></li>
+            {{/if}}
           </ul>
         </div>
       </div>
