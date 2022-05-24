@@ -1,23 +1,22 @@
-// 引入基本套件
+// 引入外部套件
 const express = require('express')
 const exphbs = require('express-handlebars')
 const mongoose = require('mongoose')
-const app = express()
+const methodOverride = require('method-override')
+
 const port = 3000
 const Restaurant = require('./models/restaurant.js')
 
+const app = express()
 
 // 使用express-handlebars 為樣版引擎
 app.engine('handlebars', exphbs({defaultLayout: 'main'}))
 app.set('view engine', 'handlebars')
 
 
-// 設定body-parser(解析post傳回來的req，body-parser已包在express中)
-app.use(express.urlencoded({extended: true}))
-
-
-// 設定靜態資料使用public資料夾
-app.use(express.static('public'))
+app.use(express.urlencoded({extended: true}))   // 設定body-parser(解析post傳回來的req，body-parser已包在express中)
+app.use(methodOverride('_method'))   //設定每一筆請求都會透過method-override進行前置處理
+app.use(express.static('public'))   // 設定靜態資料使用public資料夾
 
 
 // 與mongoDB連線
@@ -35,6 +34,7 @@ db.once('open', () => {
 app.get('/', (req, res) => {
   Restaurant.find()
     .lean()
+    .sort({ _id: 'asc' })
     .then(restaurants => res.render('index', { restaurants }))
     .catch(error => console.error(error))
 })
@@ -50,7 +50,7 @@ app.post('/restaurants', (req, res) => {
     .catch(error => console.error(error))
 })
 
-app.post('/restaurants/:id/delete', (req, res) => {
+app.delete('/restaurants/:id/', (req, res) => {
   const id = req.params.id
   Restaurant.findById(id)
     .then(restaurant => restaurant.remove())
@@ -74,7 +74,7 @@ app.get('/restaurants/:id/edit', (req, res) => {
     .catch(error => console.error(error))
 })
 
-app.post('/restaurants/:id/edit', (req, res) => {
+app.put('/restaurants/:id', (req, res) => {
   const id = req.params.id
   const result = req.body
   Restaurant.findById(id)
