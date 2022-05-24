@@ -48,7 +48,7 @@
       </div>
 
       <div class="card-columns">
-
+        {{#if restaurants}}
         {{#each restaurants}}
             <div class="card mb-3">
               <img class="card-img-top" src="{{this.image}}" alt="{{this.name}}">
@@ -71,6 +71,12 @@
               </div>
             </div>
         {{/each}}
+        
+        {{else}}
+          <h5>無結果，請更換關鍵字搜尋。</h5>
+        {{/if}}
+
+        
         
       </div>
     </div>
