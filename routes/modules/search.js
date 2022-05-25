@@ -13,12 +13,12 @@ const sortDetail = [
 ]
 
 const sortName = [
-  "預設",
-  "餐廳名稱：A → Z",
-  "餐廳名稱：Z → A",
-  "評分：高 → 低",
-  "類別",
-  "地區"
+  '預設',
+  '餐廳名稱：A → Z',
+  '餐廳名稱：Z → A',
+  '評分：高 → 低',
+  '類別',
+  '地區'
 ]
 
 router.get('/', (req, res) => {
@@ -38,6 +38,5 @@ router.get('/', (req, res) => {
     })
     .catch(error => console.error(error))
 })
-
 
 module.exports = router
