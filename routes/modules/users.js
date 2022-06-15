@@ -1,6 +1,7 @@
 // 引用 Express 與 Express 路由器
 const express = require('express')
 const router = express.Router()
+const flash = require('connect-flash')
 
 const Users = require('../../models/users')
 
@@ -19,7 +20,8 @@ router.post('/register', (req, res) => {
   const { name, email, password, confirmedPassword } = req.body
 
   if (password !== confirmedPassword) {
-    console.log('輸入密碼與確認密碼不相符') // TODO:跳回register頁面時提示”輸入＆確認密碼不相符“
+    req.flash('wrongConfirm', '輸入密碼與確認密碼不相符，請重新輸入')
+    res.locals.wrongConfirm = req.flash('wrongConfirm')
     return res.render('register', { name, email, password })
   }
 
@@ -28,12 +30,13 @@ router.post('/register', (req, res) => {
     .then(user => {
     // 找到相同的email
       if (user) {
-        console.log('此帳號已經存在') // TODO: 跳回register頁面時提示“使用者已存在”
+        req.flash('existedUser', '此帳號已經存在，請選擇其他email進行註冊')
+        res.locals.existedUser = req.flash('existedUser')
         return res.render('register', { name, email, password, confirmedPassword })
       }
       // 找不到user，所以建立該使用者
       Users.create({ name, email, password })
-        .then(() => res.render('login')) // TODO: 建立成功跳回login頁面，提示“請使用者登入”
+        .then(() => res.redirect('/')) // 建立後傳回首頁
         .catch(err => console.log(err))
     })
 })
