@@ -9,13 +9,17 @@ module.exports = app => {
 
   passport.use(new LocalStrategy(
     {
-      usernameField: 'email'
+      usernameField: 'email',
+      passReqToCallback: true
     },
-    (email, password, done) => {
+    (req, email, password, done) => {
       Users.findOne({ email })
         .then(user => {
           if (!user) return done(null, false) // 用email搜尋無結果，不提供 passport 任何使用者資訊
-          if (user.password !== password) return done(null, false) // 密碼不符，不提供 passport 任何使用者資訊
+          if (user.password !== password) { // 密碼不符，不提供 passport 任何使用者資訊
+            req.flash('loginFail', '帳號密碼有誤，請重新輸入。')
+            return done(null, false)
+          }
           return done(null, user)
         })
         .catch(err => console.log(err))

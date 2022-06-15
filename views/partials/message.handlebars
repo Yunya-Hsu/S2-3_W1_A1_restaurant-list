@@ -33,3 +33,21 @@
   </button>
 </div>
 {{/if}}
+
+{{#if notLogin}}
+<div class="alert alert-warning alert-dismissible fade show" role="alert">
+  {{notLogin}}
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+{{/if}}
+
+{{#if loginFail}}
+<div class="alert alert-warning alert-dismissible fade show" role="alert">
+  {{loginFail}}
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+{{/if}}

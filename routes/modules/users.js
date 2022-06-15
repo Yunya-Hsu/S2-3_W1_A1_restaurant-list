@@ -8,7 +8,7 @@ const Users = require('../../models/users')
 // 設定路由
 // 登入頁
 router.get('/login', (req, res) => {
-  res.render('login', { successLogout: req.flash('successLogout'), registerSuccess: req.flash('registerSuccess') })
+  res.render('login', { successLogout: req.flash('successLogout'), registerSuccess: req.flash('registerSuccess'), notLogin: req.flash('notLogin'), loginFail: req.flash('loginFail') })
 })
 
 // 驗證登入
