@@ -14,7 +14,6 @@ router.get('/login', (req, res) => {
 // 驗證登入
 router.post('/login', passport.authenticate('local', { failureRedirect: '/users/login' }), 
   (req, res) => {
-    console.log(req.session.passport, req.user) //檢查user資料 FIXME: 可刪除
     res.redirect('/')
   }
 )
