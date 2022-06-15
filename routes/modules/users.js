@@ -8,13 +8,13 @@ const Users = require('../../models/users')
 // 設定路由
 // 登入頁
 router.get('/login', (req, res) => {
-  res.render('login', { successLogout: req.flash('successLogout') })
+  res.render('login', { successLogout: req.flash('successLogout'), registerSuccess: req.flash('registerSuccess') })
 })
 
 // 驗證登入
 router.post('/login', passport.authenticate('local', { failureRedirect: '/users/login' }), 
   (req, res) => {
-    console.log(req.session.passport, req.user) //檢查user資料
+    console.log(req.session.passport, req.user) //檢查user資料 FIXME: 可刪除
     res.redirect('/')
   }
 )
@@ -43,7 +43,10 @@ router.post('/register', (req, res) => {
       }
       // 找不到user，所以建立該使用者
       Users.create({ name, email, password })
-        .then(() => res.redirect('/')) // 建立後傳回首頁
+        .then(() => {
+          req.flash('registerSuccess', '您已成功註冊，請登入帳號')
+          res.redirect('/users/login')
+        }) // 建立後傳回首頁
         .catch(err => console.log(err))
     })
 })

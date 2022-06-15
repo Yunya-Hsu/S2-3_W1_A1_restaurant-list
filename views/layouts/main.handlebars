@@ -17,9 +17,21 @@
         <div class="container">
           <a class="navbar-brand" href="/">
               <img src="https://assets-lighthouse.s3.amazonaws.com/uploads/image/file/6227/restaurant-list-logo.png" width="30" height="30" class="d-inline-block align-top" alt="我的餐廳清單">
+              {{#if user.name}}
+              {{user.name}}的餐廳清單
+              {{else}}
               我的餐廳清單
+              {{/if}}
           </a>
-          <a href="/users/login" class="btn btn-dark">Login</a>
+          <div>
+            {{#if isAuthenticated}}
+            <a href="/users/logout" class="btn btn-dark">Logout</a>
+            {{else}}
+            <a href="/users/login" class="btn btn-dark">Login</a>
+            <a href="/users/register" class="btn btn-primary">Register</a>
+            {{/if}}
+          </div>
+          
         </div>
       </nav>
       <div class="banner"></div>

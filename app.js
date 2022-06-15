@@ -16,7 +16,6 @@ const app = express()
 app.engine('handlebars', exphbs({ defaultLayout: 'main' }))
 app.set('view engine', 'handlebars')
 
-// middleware
 app.use(session({ // 設定session
   secret: 'asdfghjkasdfasdf',
   resave: false,
@@ -28,6 +27,13 @@ app.use(express.static('public')) // 設定靜態資料使用public資料夾
 usePassport(app)
 
 app.use(flash()) // 設定使用connect-flash
+
+//自訂一個全部使用的middleware，把isAuthenticated狀態傳給res.locals使用
+app.use((req, res, next) => {
+  res.locals.isAuthenticated = req.isAuthenticated()
+  res.locals.user = req.user
+  next()
+})
 
 // 設定路由
 app.use(routers)
