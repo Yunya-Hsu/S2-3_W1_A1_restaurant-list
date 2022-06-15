@@ -23,9 +23,10 @@ const sortName = [
 ]
 
 router.get('/', (req, res) => {
+  const userId = req.user._id
   const selectedSort = Number(req.query.OM) || 0
   const sortType = sortName[selectedSort]
-  Restaurant.find()
+  Restaurant.find({ userId })
     .lean()
     .sort(sortWay[selectedSort])
     .then(restaurants => {

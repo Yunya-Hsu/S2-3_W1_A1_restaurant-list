@@ -22,13 +22,15 @@ const sortName = [
 ]
 
 router.get('/', (req, res) => {
+  const userId = req.user._id
   const selectedSort = Number(req.query.OM) || 0
   const sortType = sortName[selectedSort]
   const keyword = req.query.keyword
+
   Restaurant.find({
     $or: [
-      { name: { $regex: keyword, $options: '$i' } },
-      { description: { $regex: keyword, $options: '$i' } }
+      { $and: [ { userId: userId }, { name: { $regex: keyword, $options: '$i' } }]},
+      { $and: [ { userId: userId }, { description: { $regex: keyword, $options: '$i' } }]},
     ]
   })
     .lean()
