@@ -16,23 +16,26 @@ router.get('/register', (req, res) => {
 })
 
 router.post('/register', (req, res) => {
-  const {name, email, password, confirmedPassword} = req.body
+  const { name, email, password, confirmedPassword } = req.body
+
   if (password !== confirmedPassword) {
-    console.log('輸入密碼與確認密碼不相符') //TODO:跳回register頁面時提示”輸入＆確認密碼不相符“
-    return res.render('register', {name, email})
+    console.log('輸入密碼與確認密碼不相符') // TODO:跳回register頁面時提示”輸入＆確認密碼不相符“
+    return res.render('register', { name, email, password })
   }
-  
+
   // 到mongoDB尋找是否有該user
   Users.findOne({ email })
-   .then(user => {
-    if (user) {  //找到相同的email
-      console.log('this account exists.') //TODO: 跳回register頁面時提示“使用者已存在”
-      res.render('register', { name, email })
-    }
-    Users.create({ name, email, password }) //找不到user，所以建立該使用者
-   })
-   .then(() => res.render('login')) //TODO: 跳回login頁面
-   .catch(err => console.log(err))
+    .then(user => {
+    // 找到相同的email
+      if (user) {
+        console.log('此帳號已經存在') // TODO: 跳回register頁面時提示“使用者已存在”
+        return res.render('register', { name, email, password, confirmedPassword })
+      }
+      // 找不到user，所以建立該使用者
+      Users.create({ name, email, password })
+        .then(() => res.render('login')) // TODO: 建立成功跳回login頁面，提示“請使用者登入”
+        .catch(err => console.log(err))
+    })
 })
 
 module.exports = router
