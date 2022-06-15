@@ -9,6 +9,7 @@ const port = 3000
 const routers = require('./routes')
 require('./config/mongoose')
 
+const usePassport = require('./config/passport')
 const app = express()
 
 // 使用express-handlebars 為樣版引擎
@@ -21,10 +22,12 @@ app.use(session({ // 設定session
   resave: false,
   saveUninitialized: true
 }))
-app.use(flash()) // 設定使用connect-flash
 app.use(express.urlencoded({ extended: true })) // 設定body-parser(解析post傳回來的req，body-parser已包在express中)
 app.use(methodOverride('_method')) // 設定每一筆請求都會透過method-override進行前置處理
 app.use(express.static('public')) // 設定靜態資料使用public資料夾
+usePassport(app)
+
+app.use(flash()) // 設定使用connect-flash
 
 // 設定路由
 app.use(routers)
