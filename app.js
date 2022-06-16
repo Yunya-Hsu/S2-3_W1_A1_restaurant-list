@@ -4,8 +4,11 @@ const exphbs = require('express-handlebars')
 const methodOverride = require('method-override')
 const session = require('express-session')
 const flash = require('connect-flash')
+if (process.env.NODE_ENV !== 'production') {
+  require('dotenv').config()
+}
 
-const port = 3000
+const port = process.env.PORT
 const routers = require('./routes')
 require('./config/mongoose')
 
@@ -17,7 +20,7 @@ app.engine('handlebars', exphbs({ defaultLayout: 'main' }))
 app.set('view engine', 'handlebars')
 
 app.use(session({ // 設定session
-  secret: 'asdfghjkasdfasdf',
+  secret: process.env.SESSION_SECRET,
   resave: false,
   saveUninitialized: true
 }))
