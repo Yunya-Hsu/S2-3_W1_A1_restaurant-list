@@ -91,7 +91,7 @@ control + c
 ---
 ![Create Page](https://github.com/Yunya-Hsu/S2-3_W1_A1_restaurant-list/blob/main/public/img/createPage.png)
 ---
-![Login Page]()
+![Login Page](https://github.com/Yunya-Hsu/S2-3_W1_A1_restaurant-list/blob/main/public/img/loginPage.png)
 ---
-![Rrgister Page]()
+![Rrgister Page](https://github.com/Yunya-Hsu/S2-3_W1_A1_restaurant-list/blob/main/public/img/registerPage.png)
 ---
