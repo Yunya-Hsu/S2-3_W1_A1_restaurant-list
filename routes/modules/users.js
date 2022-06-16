@@ -69,7 +69,7 @@ router.post('/register', (req, res) => {
             password: hash
           }))
         .then(() => {
-          req.flash(('registerSuccess', '您已成功註冊，請登入帳號'))
+          req.flash('registerSuccess', '您已成功註冊，請登入帳號')
           res.redirect('/users/login')
         })
         .catch(err => console.log(err))
