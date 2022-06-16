@@ -28,7 +28,7 @@ usePassport(app)
 
 app.use(flash()) // 設定使用connect-flash
 
-//自訂一個全部使用的middleware，把isAuthenticated狀態傳給res.locals使用
+// 自訂一個全部使用的middleware，把isAuthenticated狀態傳給res.locals使用
 app.use((req, res, next) => {
   res.locals.isAuthenticated = req.isAuthenticated()
   res.locals.user = req.user

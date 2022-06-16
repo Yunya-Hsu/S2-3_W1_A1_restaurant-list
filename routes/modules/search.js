@@ -29,8 +29,8 @@ router.get('/', (req, res) => {
 
   Restaurant.find({
     $or: [
-      { $and: [ { userId: userId }, { name: { $regex: keyword, $options: '$i' } }]},
-      { $and: [ { userId: userId }, { description: { $regex: keyword, $options: '$i' } }]},
+      { $and: [{ userId }, { name: { $regex: keyword, $options: '$i' } }] },
+      { $and: [{ userId }, { description: { $regex: keyword, $options: '$i' } }] }
     ]
   })
     .lean()

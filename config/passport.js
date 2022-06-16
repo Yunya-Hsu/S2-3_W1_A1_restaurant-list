@@ -15,8 +15,7 @@ module.exports = app => {
     (req, email, password, done) => {
       Users.findOne({ email })
         .then(user => {
-          if (!user) return done(null, false) // 用email搜尋無結果，不提供 passport 任何使用者資訊
-          if (user.password !== password) { // 密碼不符，不提供 passport 任何使用者資訊
+          if ((!user) || (user.password !== password)) { // 密碼不符、或者用email搜尋帳號無果，不提供 passport 任何使用者資訊
             req.flash('loginFail', '帳號密碼有誤，請重新輸入。')
             return done(null, false)
           }
