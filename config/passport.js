@@ -1,6 +1,8 @@
 const passport = require('passport')
 const LocalStrategy = require('passport-local').Strategy
 
+const bcrypt = require('bcryptjs')
+
 const Users = require('../models/users')
 
 module.exports = app => {
@@ -10,20 +12,29 @@ module.exports = app => {
   passport.use(new LocalStrategy(
     {
       usernameField: 'email',
-      passReqToCallback: true
+      passReqToCallback: true // req 一定要放在後面callback function的第一個變數
     },
+
     (req, email, password, done) => {
       Users.findOne({ email })
         .then(user => {
-          if ((!user) || (user.password !== password)) { // 密碼不符、或者用email搜尋帳號無果，不提供 passport 任何使用者資訊
-            req.flash('loginFail', '帳號密碼有誤，請重新輸入。')
+          if (!user) { // 用email搜尋帳號無果，不提供 passport 任何使用者資訊
+            req.flash('loginFail', '此帳號未被註冊，請確認輸入是否正確、或進行註冊')
             return done(null, false)
           }
-          return done(null, user)
+
+          // 找到user後，開始驗證密碼。分為兩種情況：
+          bcrypt.compare(password, user.password)
+            .then(isMatch => {
+              if (!isMatch) { // 驗證失敗，不提供 passport 任何使用者資訊
+                req.flash('loginFail', '密碼有誤，請重新輸入。')
+                return done(null, false)
+              }
+              return done(null, user) // 驗證成功
+            })
         })
-        .catch(err => console.log(err))
-    }
-  ))
+        .catch(err => done(err, false))
+    }))
 
   // 序列化，把id存到req.session.passport.user下
   passport.serializeUser((user, done) => {
